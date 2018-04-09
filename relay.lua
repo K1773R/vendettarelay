@@ -343,12 +343,12 @@ function relay.parsecommand(p)
 				local luastuff = msg:gsub("^remote ", "")
 				loadstring(luastuff)()
 				send("NOTICE "..name.." :Remote command executed")
-			else
-				if relay.channel then
-					relay.chat(chan, formatname.." "..rmsg, "CHANNEL")
-				else
-					send(irc_errormsg("channel chat disabled", name))
-				end
+			--else
+			--	if relay.channel then
+			--		relay.chat(chan, formatname.." "..rmsg, "CHANNEL")
+			--	else
+			--		send(irc_errormsg("channel chat disabled", name))
+			--	end
 			end
 		elseif relay.allircchat and chantable[chan] then
 			relay.chat(chan, formatname.." "..msg, "GUILD")
