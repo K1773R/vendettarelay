@@ -331,6 +331,12 @@ function relay.parsecommand(p)
 				
 			elseif not relay.allircchat then
 				relay.chat(chan, formatname.." "..rmsg, "GUILD")
+			elseif relay.allircchat then
+				if relay.channel then
+					relay.chat(chan, formatname.." "..rmsg, "CHANNEL")
+				else
+					send(irc_errormsg("channel chat disabled", chan))
+				end
 			end
 		elseif msg:match("^!") and chan == relay.generalchannel then
 			if relay.channel then
